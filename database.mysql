@@ -1,0 +1,92 @@
+CREATE TABLE `SpotLite`.`Users` (
+  `userId` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(255) NULL,
+  `password` VARCHAR(45) NULL,
+  `nickname` VARCHAR(45) NULL,
+  `email` VARCHAR(255) NULL,
+  `phone` VARCHAR(45) NULL,
+  `score` INT NULL,
+  PRIMARY KEY (`userId`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
+  UNIQUE INDEX `userId_UNIQUE` (`userId` ASC));
+
+
+CREATE TABLE `SpotLite`.`Challenger` (
+  `matchId` INT NOT NULL AUTO_INCREMENT,
+  `isMatched` BOOLEAN NOT NULL,
+  `challenger` VARCHAR(255) NULL,
+  `challengee` VARCHAR(255) NULL,
+  `date` VARCHAR(255) NULL,
+  PRIMARY KEY (`matchId`));
+
+
+CREATE TABLE `SpotLite`.`Verified` (
+  `isApproved` TINYINT(1) NULL,
+  `username` VARCHAR(255) NULL,
+  `approvedId` INT NOT NULL AUTO_INCREMENT,
+  `date` VARCHAR(255) NULL,
+  PRIMARY KEY (`approvedId`));
+
+
+CREATE TABLE `SpotLite`.`Challenge` (
+  `challengeId` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(255) NULL,
+  `challengeName` VARCHAR(255) NULL,
+  `date` VARCHAR(255) NULL,
+  `imgURL` VARCHAR(255) NULL,
+  PRIMARY KEY (`challengeId`));
+
+
+CREATE TABLE `SpotLite`.`ChallengedPhone` (
+  `username` VARCHAR(255) NOT NULL,
+  `phone` VARCHAR(255) NOT NULL,
+  `date` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`phone`, `date`));
+
+
+CREATE TABLE `SpotLite`.`Posts` (
+  `postId` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(255) NULL,
+  `isChallenge` VARCHAR(255) NULL,
+  `date` VARCHAR(255) NULL,
+  `time` VARCHAR(255) NULL,
+  `img` BLOB NOT NULL,
+  `imgURL` VARCHAR(255) NULL,
+  PRIMARY KEY (`postId`));
+
+
+CREATE TABLE `SpotLite`.`Suggestions` (
+  `suggestionId` INT NOT NULL,
+  `description` VARCHAR(255) NULL,
+  `challengeName` VARCHAR(255) NULL,
+  `date` VARCHAR(255) NULL,
+  `img` VARCHAR(45) NULL,
+  PRIMARY KEY (`suggestionId`));
+
+
+CREATE TABLE `SpotLite`.`Scores` (
+  `username` VARCHAR(255) NOT NULL,
+  `date` VARCHAR(255) NOT NULL,
+  `score` INT NOT NULL,
+  PRIMARY KEY (`username`, `date`));
+
+INSERT INTO Users (username, password, nickname, email, phone, score) VALUE ("test3", "passwd", "HelloWorld", "abc@usc.edu", "2137161111", 0);
+INSERT INTO Users (username, password, nickname, email, phone, score) VALUE ("test4", "passwd", "Vili", "abc@usc.edu", "2137161111", 0);
+INSERT INTO Users (username, password, nickname, email, phone, score) VALUE ("test5", "passwd", "Lin", "abc@usc.edu", "2137161111", 0);
+INSERT INTO Users (username, password, nickname, email, phone, score) VALUE ("yangtest", "passwd", "Yang", "abc@usc.edu", "+13235946776", 100);
+INSERT INTO Users (username, password, nickname, email, phone, score) VALUE ("maksim", "passwd", "Max", "abc@usc.edu", "+358469630138", 50);
+
+//Insert into challegner table
+INSERT INTO Challenger (isMatched, challenger, challengee, date) VALUE (false, "test1", "test2", "10-20-2017");
+INSERT INTO Challenger (isMatched, challenger, challengee, date) VALUE (true, "test1", "test3", "10-20-2017");
+INSERT INTO Challenger (isMatched, challenger, challengee, date) VALUE (false, "test4", "test2", "10-20-2017");
+INSERT INTO Challenger (isMatched, challenger, challengee, date) VALUE (false, "test3", "test2", "10-20-2017");
+INSERT INTO Challenger (isMatched, challenger, challengee, date) VALUE (false, "test2", "test5", "10-20-2017");
+
+//Insert into Challenge topic table
+INSERT INTO Challenge (description, challengeName, date, imgURL) VALUE ("Give five to Lin", "Warm up your roommate at 5am", "10-20-2017", "https://www.google.com");
+INSERT INTO Challenge (description, challengeName, date, imgURL) VALUE ("Give a hug to a random person", "Hug challenge", "10-21-2017", "https://www.google.com");
+INSERT INTO Challenge (description, challengeName, date, imgURL) VALUE ("How dirty the rubbish bings are", "Kiss the rubbish bin", "10-22-2017", "10-20-2017");
+INSERT INTO Challenge (description, challengeName, date, imgURL) VALUE ("Use water to warm up your roommate", "warm up your roommates", "10-23-2017", "10-20-2017");
+INSERT INTO Challenge (description, challengeName, date, imgURL) VALUE ("drink one oz of beer in 10 seconds", "drink one oz of beer in 10 seconds", "10-24-2017", "10-20-2017");
+
