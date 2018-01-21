@@ -1,2 +1,6 @@
 # backend
-This contains codes of 577a team04 for backend, written in Node.js
+This contains codes of ios App highkey for backend.
+Techonologies: nodejs, mysql
+Developed by Alex
+Please do not copy
+
